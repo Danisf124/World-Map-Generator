@@ -1,6 +1,6 @@
 /*
     Name : "World map generator"
-    Version: indev 0.1
+    Version: 1.1
     Last update: -
     Date of start: 16.01.25
     Author: Danisf
@@ -13,8 +13,6 @@
 #include <iostream>
 #include <string>
 #include <random>
-
-// Додати рандомізацію
 
 class Map
 {
@@ -38,6 +36,7 @@ private:
     int landscape_pos_y;
 
 public:
+
     //Constractur of class
     Map()
     {
@@ -67,8 +66,6 @@ public:
         delete[] map; // Deleat map
         map = 0; // Set pointer to 0s
     }
-    // Deleat random
-
     //Drawin map in consol
     void MapDraw()
     {
