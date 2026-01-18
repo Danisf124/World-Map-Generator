@@ -236,7 +236,13 @@ public:
         landscape_pos_y = 0;
 
     }
-
+    // Generating all bioms
+    void GenerateMap()
+    {
+        GenerateSea();
+        GenerateForest();
+        GenerateMountain();
+    }
 
 };
 
@@ -247,12 +253,8 @@ int main()
 
     Map map;
 
-    map.GenerateSea();
-
-    map.GenerateForest();
-
-    map.GenerateMountain();
-
+    map.GenerateMap();
+   
     map.MapDraw();
 
     map.ReturnType(3, 3);
