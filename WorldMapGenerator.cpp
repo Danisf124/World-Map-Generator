@@ -8,11 +8,13 @@
     GitHub: -
 */
 
+//% g++ -Wall -g WorldMapGenerator.cpp -o bin/map
+
 #include <iostream>
 #include <string>
 #include <random>
 
-// Додати рандомізацію, перед ци створити гіт!
+// Додати рандомізацію
 
 class Map
 {
@@ -65,12 +67,8 @@ public:
         delete[] map; // Deleat map
         map = 0; // Set pointer to 0s
     }
-    //Randoming lanscape position
-    void RandomPos()
-    {
-        landscape_pos_x = rand()% 5+1;
-        landscape_pos_y = rand()% 5+1;
-    }
+    // Deleat random
+
     //Drawin map in consol
     void MapDraw()
     {
@@ -122,7 +120,7 @@ public:
             break;
 
         default:
-            std::cout << "Invalid input\n"; 
+            std::cout << "Invalid types\n"; 
             break;
         }
     }
@@ -143,17 +141,17 @@ public:
                     
 
                 }
-                else if(j < 2 || j > (rows - 3)) // If we on up or down of map
+                else if(j < 2 || j > (cols - 3)) // If we on up or down of map
                 {
                     map[i][j] = 8;
                 }
                 
-                if((flip_coin == 1 && i == 2) || (flip_coin == 1 && i == 12) )
+                if((flip_coin == 1 && i == 2) || (flip_coin == 1 && i == (rows - 3)) )
                 {
                     //If we on a top of map change 0 to 8
                     map[i][j] = 8;
                 }
-                else if((flip_coin == 1 && j == 2)||(flip_coin == 1 && j == 12))
+                else if((flip_coin == 1 && j == 2)||(flip_coin == 1 && j == (cols - 3)))
                 {
                     //If we on a corner of map change 0 to 8
                     map[i][j] = 8;
@@ -173,13 +171,13 @@ public:
         landscape_pos_y = 7;
 
         // Cheking if fores is ouyt of map
-        if(landscape_height + landscape_pos_x >= 14)
+        if(landscape_height + landscape_pos_x >= (rows - 1))
         {
-            landscape_height = 15 - landscape_pos_x;
+            landscape_height = rows - landscape_pos_x;
         }
-        else if(landscape_leight + landscape_pos_y >= 14)
+        else if(landscape_leight + landscape_pos_y >= (cols - 1))
         {
-            landscape_leight = 15 - landscape_pos_y;
+            landscape_leight = cols - landscape_pos_y;
         }
         
         
@@ -211,13 +209,13 @@ public:
         landscape_pos_x = 5;
         landscape_pos_y = 4;
 
-        if(landscape_height + landscape_pos_x >= 14)
+        if(landscape_height + landscape_pos_x >= (rows - 1))
         {
-            landscape_height = 15 - landscape_pos_x;
+            landscape_height = rows - landscape_pos_x;
         }
-        else if(landscape_leight + landscape_pos_y >= 14)
+        else if(landscape_leight + landscape_pos_y >= (cols - 1))
         {
-            landscape_leight = 15 - landscape_pos_y;
+            landscape_leight = cols - landscape_pos_y;
         }   
 
         for(int i = 0; i < landscape_height; ++i)
@@ -264,7 +262,6 @@ int main()
     map.ReturnType(11, 7);
 
     map.ReturnType(5 ,4);
-    
 
     return 0;
 }
