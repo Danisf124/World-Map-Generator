@@ -167,8 +167,8 @@ public:
         // Seting forest position(in futher random)
         landscape_height = rand()% 4+3;
         landscape_leight = rand()% 4+3;
-        landscape_pos_x = rand()% 14+1;
-        landscape_pos_y = rand()% 14+1;
+        landscape_pos_x = rand()% 11+1;
+        landscape_pos_y = rand()% 11+1;
 
         // Cheking if fores is ouyt of map
         if(landscape_height + landscape_pos_x >= (rows - 1))
@@ -204,10 +204,10 @@ public:
     //Generate mountain on map
     void GenerateMountain()
     {
-        landscape_height = 3;/*rand()% 4+1;*/
-        landscape_leight = 3;/*rand()% 4+1;*/
-        landscape_pos_x = 5;
-        landscape_pos_y = 4;
+        landscape_height = rand()% 3+2;
+        landscape_leight = rand()% 3+2;
+        landscape_pos_x = rand()% 10+1;
+        landscape_pos_y = rand()% 10+1;
 
         if(landscape_height + landscape_pos_x >= (rows - 1))
         {
