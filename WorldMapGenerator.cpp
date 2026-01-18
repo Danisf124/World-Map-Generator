@@ -165,10 +165,10 @@ public:
     void GenerateForest()
     {   
         // Seting forest position(in futher random)
-        landscape_height = 6;/*rand()% 4+1;*/
-        landscape_leight = 6;/*rand()% 4+1;*/
-        landscape_pos_x = 11;
-        landscape_pos_y = 7;
+        landscape_height = rand()% 4+3;
+        landscape_leight = rand()% 4+3;
+        landscape_pos_x = rand()% 14+1;
+        landscape_pos_y = rand()% 14+1;
 
         // Cheking if fores is ouyt of map
         if(landscape_height + landscape_pos_x >= (rows - 1))
