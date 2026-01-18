@@ -1,6 +1,6 @@
 /*
     Name : "World map generator"
-    Version: 1.0
+    Version: indev 0.1
     Last update: -
     Date of start: 16.01.25
     Author: Danisf
@@ -167,10 +167,10 @@ public:
         // Seting forest position(in futher random)
         landscape_height = rand()% 4+3;
         landscape_leight = rand()% 4+3;
-        landscape_pos_x = rand()% 11+1;
-        landscape_pos_y = rand()% 11+1;
-
-        // Cheking if fores is ouyt of map
+        landscape_pos_x = rand()% 10+1;
+        landscape_pos_y = rand()% 10+1;
+        
+        // Cheking if fores is out of map
         if(landscape_height + landscape_pos_x >= (rows - 1))
         {
             landscape_height = rows - landscape_pos_x;
@@ -185,20 +185,22 @@ public:
         {
             for(int j = 0; j < landscape_leight; ++j)
             {
-                
+                //Fliping coin to random lanscape
+                int flip_coin = rand()% 2; 
+
                 if(map[i + landscape_pos_x][j + landscape_pos_y] == 8)
                 {
                    continue;
+                }
+                
+                if(flip_coin == 1)
+                {
+                    continue;
                 }
 
                 map[i + landscape_pos_x][j + landscape_pos_y] = 7;
             }
         }
-
-        landscape_height = 0;/*rand()% 4+1;*/
-        landscape_leight = 0;/*rand()% 4+1;*/
-        landscape_pos_x = 0;
-        landscape_pos_y = 0;
 
     }
     //Generate mountain on map
@@ -206,8 +208,8 @@ public:
     {
         landscape_height = rand()% 3+2;
         landscape_leight = rand()% 3+2;
-        landscape_pos_x = rand()% 10+1;
-        landscape_pos_y = rand()% 10+1;
+        landscape_pos_x = rand()% 8+1;
+        landscape_pos_y = rand()% 8+1;
 
         if(landscape_height + landscape_pos_x >= (rows - 1))
         {
@@ -230,10 +232,6 @@ public:
                 map[i + landscape_pos_x][j + landscape_pos_y] = 3;
             }
         }
-        landscape_height = 0;/*rand()% 4+1;*/
-        landscape_leight = 0;/*rand()% 4+1;*/
-        landscape_pos_x = 0;
-        landscape_pos_y = 0;
 
     }
     // Generating all bioms
