@@ -20,11 +20,11 @@ private:
 
     // parameters of map
 
-    int rows; // Rows
+    int rows; // Maps rows 
 
-    int cols; // Collums
+    int cols; // Maps collums
 
-    int** map; // map array
+    int** map; // Map array
 
     // parameters of landscape
     int landscape_leight;   
