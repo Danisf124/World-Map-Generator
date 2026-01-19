@@ -1,6 +1,6 @@
 /*
     Name : "World map generator"
-    Version: 1.2
+    Version: 1.3
     Last update: 19.01.26
     Date of start: 16.01.25
     Author: Danisf
