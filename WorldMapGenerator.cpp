@@ -40,10 +40,28 @@ public:
     //Constractur of class
     Map()
     {
+        bool is_valid = false;
 
-        rows = 15;
+        while(!is_valid)
+        {   std::cout <<"Peleace, enter number of rows in map: ";
+            std::cin >>rows;
+            std::cout <<"Peleace, enter number of cols in map: ";
+            std::cin >> cols;
 
-        cols = 15;
+            if(rows <=0 || cols <= 0)
+            {
+                std::cout<<"Rows and cols must be bigger then 0\n ";
+            }
+            else if(rows > 50 || cols > 50)
+            {
+                std::cout<<"Rows and cols can't be bigger then 50\n ";
+            }
+            else 
+            {
+                is_valid = true;
+            }
+        }
+
 
         map = new int* [rows]; //Init row of map
 
