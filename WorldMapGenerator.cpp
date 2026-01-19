@@ -1,14 +1,12 @@
 /*
     Name : "World map generator"
-    Version: 1.3
+    Version: 1.3.1
     Last update: 19.01.26
     Date of start: 16.01.25
     Author: Danisf
-    Email: danasahno54@gmail.com
-    GitHub: -
+    GitHub: https://github.com/Danisf124/World-Map-Generator
 */
 
-//% g++ -Wall -g WorldMapGenerator.cpp -o bin/map
 
 #include <iostream>
 #include <string>

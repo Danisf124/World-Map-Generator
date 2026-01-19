@@ -1,10 +1,12 @@
 #include "Map.h"
 #include<iostream>
 
+//Constructor 
 Map::Map()
 {
     bool is_valid = false;
 
+    //Cheking user input
     while(!is_valid)
     {   std::cout <<"Peleace, enter number of rows in map: ";
         std::cin >>rows;
@@ -13,11 +15,11 @@ Map::Map()
 
         if(rows < 10 || cols < 10)
         {
-            std::cout<<"Rows and cols must be bigger then 10\n ";
+            std::cout<<"Rows and cols must be bigger then 10 ";
         }
         else if(rows > 50 || cols > 50)
         {
-            std::cout<<"Rows and cols can't be bigger then 50\n ";
+            std::cout<<"Rows and cols can't be bigger then 50 ";
         }
         else 
         {
@@ -34,11 +36,11 @@ Map::Map()
 
         if(landscape_num <= 0)
         {
-            std::cout<<"Landscape must be at least 1 \n ";
+            std::cout<<"Landscape must be at least 1 ";
         }
         else if(landscape_num > 5)
         {
-            std::cout<<"Landscape must be leas then 5\n ";
+            std::cout<<"Landscape must be leas then 5 ";
         }
         else 
         {
@@ -58,6 +60,7 @@ Map::Map()
     }
 }
 
+//Destructor
 Map::~Map()
 {
     for(int i = 0; i < rows; i++)
@@ -67,9 +70,9 @@ Map::~Map()
     delete[] map; // Deleat map
     map = 0; // Set pointer to 0s
 }
-
+// Drawing map on terminal
 void Map::MapDraw()
-{
+{   //To colore numbers, use ANSI
     for(int i = 0; i < rows; i++)
     {
         for(int j = 0; j < cols; j++)
@@ -136,6 +139,7 @@ void Map::GenerateSea()
 
 void Map::GenerateForest()
 {
+    // Formula for max biom size
     int max_forest_height = rows / 2;  
     int max_forest_width = cols / 2;
         
@@ -166,15 +170,15 @@ void Map::GenerateForest()
 
                 if(map[i + landscape_pos_x][j + landscape_pos_y] == 8)
                 {
-                continue;
+                    continue; // If biom type is Sea, skip iteration
                 }
                 
                 if(flip_coin == 1)
                 {
-                    continue;
+                    continue; // If flip is 1, skip iteration
                 }
 
-                map[i + landscape_pos_x][j + landscape_pos_y] = 7;
+                map[i + landscape_pos_x][j + landscape_pos_y] = 7; // Set forest on map
             }
         }
 
@@ -182,7 +186,8 @@ void Map::GenerateForest()
 }
 
 void Map::GenerateMountain()
-{
+{   
+     // Formula for max biom size
     int max_mountain_height = rows / 4;
     int max_mountain_width = cols / 4;
 
@@ -209,10 +214,10 @@ void Map::GenerateMountain()
             {
                 if(map[i + landscape_pos_x][j + landscape_pos_y] == 8)
                 {
-                    continue;
+                    continue; // If biom type is Sea, skip iteration
                 }
 
-                map[i + landscape_pos_x][j + landscape_pos_y] = 3;
+                map[i + landscape_pos_x][j + landscape_pos_y] = 3; // Set mountian on map
             }
         }
     } 
@@ -220,6 +225,15 @@ void Map::GenerateMountain()
 
 void Map::GenerateMap()
 {
+    //Generating all map.
+    // !IMPOTANT! The generation mast be like this layers:
+    /*
+        FIELD ->
+        SEA ->
+        FOREST ->
+        MOUNTAIN
+    */
+    //You can change it, but remember set filed at begine, and mointain at the end!
     GenerateSea();
     GenerateForest();
     GenerateMountain();

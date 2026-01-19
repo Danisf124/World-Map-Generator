@@ -21,7 +21,7 @@ private:
 
     int landscape_pos_y;
 
-    int landscape_num;
+    int landscape_num; //Numbers of bioms on map
 
 public:
 
