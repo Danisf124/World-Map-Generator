@@ -1,6 +1,6 @@
 /*
     Name : "World map generator"
-    Version: 1.1
+    Version: indev 0.2
     Last update: -
     Date of start: 16.01.25
     Author: Danisf
@@ -35,6 +35,8 @@ private:
 
     int landscape_pos_y;
 
+    int landscape_num;
+
 public:
 
     //Constractur of class
@@ -62,6 +64,26 @@ public:
             }
         }
 
+        is_valid = false;
+
+        while(!is_valid)
+        {   
+            std::cout <<"Pleace enter the number of lanscape: ";
+            std::cin >> landscape_num;
+
+            if(landscape_num <= 0)
+            {
+                std::cout<<"Landscape must be at least 1 \n ";
+            }
+            else if(landscape_num > 5)
+            {
+                std::cout<<"Landscape must be leas then 5\n ";
+            }
+            else 
+            {
+                is_valid = true;
+            }
+        }
 
         map = new int* [rows]; //Init row of map
 
@@ -183,7 +205,7 @@ public:
         int max_forest_height = rows / 2;  
         int max_forest_width = cols / 2;
         
-        for(int k = 0; k < 3; ++k)
+        for(int k = 0; k < landscape_num; ++k)
         {
             // Seting forest position(in futher random)
             landscape_height = rand()% max_forest_height + 1;
@@ -229,9 +251,10 @@ public:
     void GenerateMountain()
     {   
 
-        int max_mountain_height = rows / 2;
-        int max_mountain_width = cols / 2;
-        for(int k = 0; k < 3; ++k)
+        int max_mountain_height = rows / 4;
+        int max_mountain_width = cols / 4;
+
+        for(int k = 0; k < landscape_num; ++k)
         {   
             landscape_height = rand()% max_mountain_height + 1;
             landscape_leight = rand()% max_mountain_width + 1;
@@ -254,7 +277,7 @@ public:
                 {
                     if(map[i + landscape_pos_x][j + landscape_pos_y] == 8)
                     {
-                    continue;
+                        continue;
                     }
 
                     map[i + landscape_pos_x][j + landscape_pos_y] = 3;
