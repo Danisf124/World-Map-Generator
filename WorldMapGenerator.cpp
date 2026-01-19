@@ -48,9 +48,9 @@ public:
             std::cout <<"Peleace, enter number of cols in map: ";
             std::cin >> cols;
 
-            if(rows <=0 || cols <= 0)
+            if(rows < 10 || cols < 10)
             {
-                std::cout<<"Rows and cols must be bigger then 0\n ";
+                std::cout<<"Rows and cols must be bigger then 10\n ";
             }
             else if(rows > 50 || cols > 50)
             {
@@ -179,44 +179,51 @@ public:
     //Generate forest on map
     void GenerateForest()
     {   
-        // Seting forest position(in futher random)
-        landscape_height = rand()% 4+3;
-        landscape_leight = rand()% 4+3;
-        landscape_pos_x = rand()% 10+1;
-        landscape_pos_y = rand()% 10+1;
         
-        // Cheking if fores is out of map
-        if(landscape_height + landscape_pos_x >= (rows - 1))
-        {
-            landscape_height = rows - landscape_pos_x;
-        }
-        else if(landscape_leight + landscape_pos_y >= (cols - 1))
-        {
-            landscape_leight = cols - landscape_pos_y;
-        }
+        int max_forest_height = rows / 2;  
+        int max_forest_width = cols / 2;
         
-        
-        for(int i = 0; i < landscape_height; ++i)
+        for(int k = 0; k < 3; ++k)
         {
-            for(int j = 0; j < landscape_leight; ++j)
+            // Seting forest position(in futher random)
+            landscape_height = rand()% max_forest_height + 1;
+            landscape_leight = rand()% max_forest_width + 1;
+            landscape_pos_x = rand()% (rows-4)+2;
+            landscape_pos_y = rand()% (cols-4)+2;
+
+            // Cheking if fores is out of map
+            if(landscape_height + landscape_pos_x >= (rows - 1))
             {
-                //Fliping coin to random lanscape
-                int flip_coin = rand()% 2; 
-
-                if(map[i + landscape_pos_x][j + landscape_pos_y] == 8)
-                {
-                   continue;
-                }
-                
-                if(flip_coin == 1)
-                {
-                    continue;
-                }
-
-                map[i + landscape_pos_x][j + landscape_pos_y] = 7;
+                landscape_height = rows - landscape_pos_x;
             }
-        }
+            else if(landscape_leight + landscape_pos_y >= (cols - 1))
+            {
+                landscape_leight = cols - landscape_pos_y;
+            }
 
+            for(int i = 0; i < landscape_height; ++i)
+            {
+                for(int j = 0; j < landscape_leight; ++j)
+                {
+                    //Fliping coin to random lanscape
+                    int flip_coin = rand()% 2; 
+
+                    if(map[i + landscape_pos_x][j + landscape_pos_y] == 8)
+                    {
+                    continue;
+                    }
+                
+                    if(flip_coin == 1)
+                    {
+                        continue;
+                    }
+
+                    map[i + landscape_pos_x][j + landscape_pos_y] = 7;
+                }
+            }
+
+        }
+        
     }
     //Generate mountain on map
     void GenerateMountain()
