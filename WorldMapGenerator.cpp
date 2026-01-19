@@ -227,34 +227,40 @@ public:
     }
     //Generate mountain on map
     void GenerateMountain()
-    {
-        landscape_height = rand()% 3+2;
-        landscape_leight = rand()% 3+2;
-        landscape_pos_x = rand()% 8+1;
-        landscape_pos_y = rand()% 8+1;
+    {   
 
-        if(landscape_height + landscape_pos_x >= (rows - 1))
-        {
-            landscape_height = rows - landscape_pos_x;
-        }
-        else if(landscape_leight + landscape_pos_y >= (cols - 1))
-        {
-            landscape_leight = cols - landscape_pos_y;
-        }   
+        int max_mountain_height = rows / 2;
+        int max_mountain_width = cols / 2;
+        for(int k = 0; k < 3; ++k)
+        {   
+            landscape_height = rand()% max_mountain_height + 1;
+            landscape_leight = rand()% max_mountain_width + 1;
+            landscape_pos_x = rand()% (rows-4)+2;
+            landscape_pos_y = rand()% (cols-4)+2;
 
-        for(int i = 0; i < landscape_height; ++i)
-        {
-            for(int j = 0; j < landscape_leight; ++j)
+            //Cheking corners of map
+            if(landscape_height + landscape_pos_x >= (rows - 1))
             {
-                if(map[i + landscape_pos_x][j + landscape_pos_y] == 8)
-                {
-                   continue;
-                }
-
-                map[i + landscape_pos_x][j + landscape_pos_y] = 3;
+                landscape_height = rows - landscape_pos_x;
             }
-        }
+            else if(landscape_leight + landscape_pos_y >= (cols - 1))
+            {
+                landscape_leight = cols - landscape_pos_y;
+            } 
 
+            for(int i = 0; i < landscape_height; ++i)
+            {
+                for(int j = 0; j < landscape_leight; ++j)
+                {
+                    if(map[i + landscape_pos_x][j + landscape_pos_y] == 8)
+                    {
+                    continue;
+                    }
+
+                    map[i + landscape_pos_x][j + landscape_pos_y] = 3;
+                }
+            }
+        } 
     }
     // Generating all bioms
     void GenerateMap()
