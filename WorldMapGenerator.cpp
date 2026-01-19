@@ -1,6 +1,6 @@
 /*
     Name : "World map generator"
-    Version: indev 0.2
+    Version: 1.2
     Last update: -
     Date of start: 16.01.25
     Author: Danisf
