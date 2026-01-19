@@ -96,31 +96,6 @@ public:
         }
         
     }
-    // Return the type of landscape 
-    void ReturnType(int row, int col)
-    {
-        
-        switch (map[row][col])
-        {
-        case 0:
-            std::cout << "\e[0;32m"<< row << " " << col << " The type is Field\n";
-            break;
-
-        case 8:
-            std::cout << "\e[0;94m" << row << " " << col<< " The type is Sea\n";
-            break;
-        case 7:
-            std::cout << "\e[0;92m" << row << " " << col << " The type is Forest\n";
-            break;
-        case 3:
-            std::cout << "\x1B[0m" << row << " " << col<< " The type is Mountain\n";
-            break;
-
-        default:
-            std::cout << "Invalid types\n"; 
-            break;
-        }
-    }
     // Genrate sea on map
     void GenerateSea()
     {
@@ -251,14 +226,6 @@ int main()
     map.GenerateMap();
    
     map.MapDraw();
-
-    map.ReturnType(3, 3);
-
-    map.ReturnType(0,0);
-
-    map.ReturnType(11, 7);
-
-    map.ReturnType(5 ,4);
 
     return 0;
 }
